@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>PC Stock Checker</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='styles/index.css') }}"
+    />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">PC Stock Checker</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Heading Row -->
+      <div class="row align-items-center my-5">
+        <div class="col-lg-7">
+          <img
+            class="img-fluid rounded mb-4 mb-lg-0"
+            src="https://cdn.mos.cms.futurecdn.net/Q2gkMFk632VuutzKCvE7La.jpg"
+            alt=""
+          />
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-5">
+          <h1 class="font-weight-light">The PC Stock Checker!</h1>
+          <p>
+            Hey! This website will be able to check the stock and prices of
+            different pc components. It not to fancy right now but soon it will
+            be able to do some cazy things. One day, it will be able to buy
+            components using a bot!
+          </p>
+          <a class="btn btn-primary" href="/">Refresh Website!</a>
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+
+      <!-- Call to Action Well -->
+      <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body">
+          <p class="text-white m-0">
+            This website is still a work in progress!
+          </p>
+        </div>
+      </div>
+
+      <!-- Content Row -->
+      <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-5">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title">{{product.name}}</h2>
+              <h3 class="card-text">Stock: {{product.stock}}</h3>
+              <h4>Price: {{product.price}}</h4>
+              <img src="{{product.image}}" alt="" />
+            </div>
+            <div class="card-footer">
+              <a href="{{ product.link }}" class="btn btn-primary btn-sm"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          Copyright &copy; PC Stock Checker 2020
+        </p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+      integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
