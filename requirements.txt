@@ -1,5 +1,3 @@
-Flask
-gunicorn
 altgraph==0.17
 apipkg==1.5
 appdirs==1.4.4       
