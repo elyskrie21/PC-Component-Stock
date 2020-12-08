@@ -18,3 +18,7 @@ body {
     float: right;
     position: relative;
   }
+
+  .product-img {
+    max-width: 300px;
+  }
