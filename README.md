@@ -1,2 +1,2 @@
-# Heroku App
-Come back later
+# PC Part Stock
+Welcome to PC Part Stock!
