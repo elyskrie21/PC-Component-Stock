@@ -1,4 +1,3 @@
-
 body {
     padding-top: 56px;
   }
@@ -20,5 +19,5 @@ body {
   }
 
   .product-img {
-    max-width: 300px;
+    max-width: 16rem;
   }

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, request, jsonify
+from flask import Flask, render_template, Response, request, jsonify, redirect 
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow 
 import os
@@ -55,6 +55,10 @@ def add_product():
     link = request.json['link']
     image = request.json['image']
     
+    if bool(db.session.query(Product).filter_by(name=name).first()):
+        product = db.session.query(Product).filter(Product.name==name).first()
+        return redirect(f'/product/{product.id}', code=307)
+    
     new_product = Product(name, stock, price, link, image)
     
     db.session.add(new_product)
@@ -76,7 +80,7 @@ def get_product(id):
     product = Product.query.get(id)
     return product_schema.jsonify(product)
 
-@app.route('/product/<id>', methods=["PUT"])
+@app.route('/product/<id>', methods=["PUT", "POST"])
 def update_product(id):
     product = Product.query.get(id)
     
@@ -94,7 +98,7 @@ def update_product(id):
     
     db.session.commit()
     
-    return product_schema.jsonify(new_item)
+    return product_schema.jsonify(product)
 
 
 if __name__ == "__main__":
